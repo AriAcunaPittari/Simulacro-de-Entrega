@@ -47,7 +47,7 @@ test.describe("TestCases de Playground", () => {
     await fileDownload.downloadFile();
   });
   test.only("Subir un elemento", async ({ page }) => {
-    // Completo pero sin poder testear
+    // OK!
     const pom = new poManagerPG(page);
     const navigate = await pom.navigatePG;
     const fileUpload = await pom.fileUpload
