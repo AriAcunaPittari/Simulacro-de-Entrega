@@ -39,8 +39,8 @@ test.describe("TestCases de Playground", () => {
     const navigate = await pom.navigatePG;
     await navigate.goToHomePage();
   });
-  test("Descargar elementos", async ({ page }) => {
-    // Falta corroborar el archivo descargado.
+  test.only("Descargar elementos", async ({ page }) => {
+    // Duda: No encuentra el archivo.
     const pom = new poManagerPG(page);
     const navigate = await pom.navigatePG;
     const fileDownload = await pom.fileDownload;
@@ -76,6 +76,7 @@ test.describe("TestCases de Playground", () => {
     await notification.Error();
   });
   test("Seleccionar Opciones", async ({ page }) => {
+    // Pendiente
     const pom = new poManagerPG(page);
     const navigate = await pom.navigatePG;
     await navigate.goToHomePage();
