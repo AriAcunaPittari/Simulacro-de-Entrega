@@ -1,7 +1,7 @@
 import test, { chromium, expect } from "@playwright/test";
 import { poManagerPG } from "../pom/poManager";
 
-//Total completado: 7
+//Total completado: 8
 
 test.describe("TestCases de Playground", () => {
   test("Agregar y eliminar", async ({ page }) => {
@@ -32,14 +32,17 @@ test.describe("TestCases de Playground", () => {
     await navigate.goToHomePage();
     await dragAndDrop.dragAndDropCounter();
     // Not Finished - Hard
+
   });
   test("Tabla dinamica", async ({ page }) => {
-    //Pendiente
+    //Pendiente encontrar la comparativa.
     const pom = new poManagerPG(page);
     const navigate = await pom.navigatePG;
+    const dynamicTable = await pom.dynamicTable;
     await navigate.goToHomePage();
+    await dynamicTable.encontrarResultado();
   });
-  test.only("Descargar elementos", async ({ page }) => {
+  test("Descargar elementos", async ({ page }) => {
     // Duda: No encuentra el archivo.
     const pom = new poManagerPG(page);
     const navigate = await pom.navigatePG;
@@ -75,11 +78,18 @@ test.describe("TestCases de Playground", () => {
     await notification.Warning();
     await notification.Error();
   });
-  test("Seleccionar Opciones", async ({ page }) => {
-    // Pendiente
+  test.only("Seleccionar Opciones", async ({ page }) => {
+    // OK!
     const pom = new poManagerPG(page);
     const navigate = await pom.navigatePG;
+    const radioButton = await pom.radioButton;
     await navigate.goToHomePage();
+    await radioButton.selectPurple();
+    await radioButton.selectGreen();
+    await radioButton.selectOrange();
+    await radioButton.findWhite();
+    
+    
   });
   test("Seleccionar rango de Sliders", async ({ page }) => {
     // OK!
@@ -92,7 +102,7 @@ test.describe("TestCases de Playground", () => {
     await sliders.moveWithInputBoxSlider();
   });
   test("Visualizar tooltips", async ({ page }) => {
-    // Sin poder probarlo y dudas con Locator
+    // Locators problems
     const pom = new poManagerPG(page);
     const navigate = await pom.navigatePG;
     const tooltips = await pom.tooltips;

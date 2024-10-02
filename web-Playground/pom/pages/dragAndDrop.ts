@@ -9,6 +9,7 @@ export class dragAndDrop {
   totalLocatorEASY: Locator;
   // Drag and Drop Nivel Hard
   goToDragDropHARD: Locator;
+  
 
   constructor(page: Page) {
     this.page = page;
