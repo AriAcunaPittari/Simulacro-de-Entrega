@@ -1,6 +1,7 @@
 import test, { chromium, expect } from "@playwright/test";
 import { poManagerPG } from "../pom/poManager";
 
+//Total completado: 7
 
 test.describe("TestCases de Playground", () => {
   test("Agregar y eliminar", async ({ page }) => {
@@ -46,7 +47,7 @@ test.describe("TestCases de Playground", () => {
     await navigate.goToHomePage();
     await fileDownload.downloadFile();
   });
-  test.only("Subir un elemento", async ({ page }) => {
+  test("Subir un elemento", async ({ page }) => {
     // OK!
     const pom = new poManagerPG(page);
     const navigate = await pom.navigatePG;
@@ -80,10 +81,14 @@ test.describe("TestCases de Playground", () => {
     await navigate.goToHomePage();
   });
   test("Seleccionar rango de Sliders", async ({ page }) => {
-    // Pendiente
+    // OK!
     const pom = new poManagerPG(page);
     const navigate = await pom.navigatePG;
+    const sliders = await pom.sliders;
     await navigate.goToHomePage();
+    await sliders.moveBasicSlider();
+    await sliders.moveRangeSlider();
+    await sliders.moveWithInputBoxSlider();
   });
   test("Visualizar tooltips", async ({ page }) => {
     // Sin poder probarlo y dudas con Locator
@@ -94,7 +99,7 @@ test.describe("TestCases de Playground", () => {
     await tooltips.hoverElements();
   });
   test("Completar diversos inputs", async ({ page }) => {
-    // No coinciden / Completa los campos correctamente.
+    // OK!
     const pom = new poManagerPG(page);
     const navigate = await pom.navigatePG;
     const variousInputs = await pom.variousInputs;
