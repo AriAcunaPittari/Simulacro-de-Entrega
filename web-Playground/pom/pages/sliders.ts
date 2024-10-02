@@ -1,7 +1,7 @@
-import { Page } from "playwright-core";
+import { Locator, Page } from "playwright-core";
 
 
-export class tooltips {
+export class sliders {
     page: Page;
     
     constructor (page:Page){

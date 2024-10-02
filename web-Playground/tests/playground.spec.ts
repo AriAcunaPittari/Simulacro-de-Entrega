@@ -1,16 +1,7 @@
 import test, { chromium, expect } from "@playwright/test";
 import { poManagerPG } from "../pom/poManager";
 
-/*test.beforeAll(async ({}) => {
-    const browser = await chromium.launch({ headless: false });
-    const context = await browser.newContext();
-    const page = await context.newPage();
-    const pom = new poManagerPG(page);
-    const navigate = await pom.navigatePG;
-    await navigate.goToHomePage();
-    await browser.close();
-  }); 
-  */
+
 test.describe("TestCases de Playground", () => {
   test("Agregar y eliminar", async ({ page }) => {
     // OK!
@@ -42,6 +33,7 @@ test.describe("TestCases de Playground", () => {
     // Not Finished - Hard
   });
   test("Tabla dinamica", async ({ page }) => {
+    //Pendiente
     const pom = new poManagerPG(page);
     const navigate = await pom.navigatePG;
     await navigate.goToHomePage();
@@ -54,10 +46,13 @@ test.describe("TestCases de Playground", () => {
     await navigate.goToHomePage();
     await fileDownload.downloadFile();
   });
-  test("Subir un elemento", async ({ page }) => {
+  test.only("Subir un elemento", async ({ page }) => {
+    // Completo pero sin poder testear
     const pom = new poManagerPG(page);
     const navigate = await pom.navigatePG;
+    const fileUpload = await pom.fileUpload
     await navigate.goToHomePage();
+    await fileUpload.uploadFile();
   });
   test("Logueo", async ({ page }) => {
     // OK!
@@ -85,18 +80,21 @@ test.describe("TestCases de Playground", () => {
     await navigate.goToHomePage();
   });
   test("Seleccionar rango de Sliders", async ({ page }) => {
-    // Dudas!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // Pendiente
     const pom = new poManagerPG(page);
     const navigate = await pom.navigatePG;
     await navigate.goToHomePage();
   });
   test("Visualizar tooltips", async ({ page }) => {
+    // Sin poder probarlo y dudas con Locator
     const pom = new poManagerPG(page);
     const navigate = await pom.navigatePG;
+    const tooltips = await pom.tooltips;
     await navigate.goToHomePage();
+    await tooltips.hoverElements();
   });
-  test.only("Completar diversos inputs", async ({ page }) => {
-    // No coinciden
+  test("Completar diversos inputs", async ({ page }) => {
+    // No coinciden / Completa los campos correctamente.
     const pom = new poManagerPG(page);
     const navigate = await pom.navigatePG;
     const variousInputs = await pom.variousInputs;
