@@ -19,13 +19,13 @@ export class tooltips {
     async hoverElements(){
         await this.goToTooltip.click();
         await this.binIcon.hover();
-        const tooltipBin= await this.page.locator("div.MuiTooltip-tooltip MuiTooltip-tooltipArrow MuiTooltip-tooltipPlacementRight css-1ict8al").textContent();
+        const tooltipBin= await this.page.locator("div.MuiTooltip-tooltip MuiTooltip-tooltipArrow MuiTooltip-tooltipPlacementRight css-1ict8al");
         await expect(tooltipBin).toBe("You don't have permission to do this");
         await this.moreInfoBtn.hover();
-        const tooltipInfoButton= await this.page.locator("div.MuiTooltip-tooltip MuiTooltip-tooltipArrow MuiTooltip-tooltipPlacementRight css-1ict8al").textContent();
+        const tooltipInfoButton= await this.page.locator("div.MuiTooltip-tooltip MuiTooltip-tooltipArrow MuiTooltip-tooltipPlacementRight css-1ict8al").innerText();
         await expect(tooltipInfoButton).toBe("For more information, click here:Testing Playground");
         await this.textToHover.hover();
-        const tooltipText= await this.page.locator("div.MuiTooltip-tooltip MuiTooltip-tooltipArrow MuiTooltip-tooltipPlacementRight css-1ict8al").textContent();
+        const tooltipText= await this.page.locator("div.MuiTooltip-tooltip MuiTooltip-tooltipArrow MuiTooltip-tooltipPlacementRight css-1ict8al").innerText();
         await expect(tooltipBin).toBe("A really really long text example");
 
     }

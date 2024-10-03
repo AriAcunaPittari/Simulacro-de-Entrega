@@ -1,3 +1,4 @@
+import { table } from "console";
 import { Locator, Page } from "playwright-core";
 
 export class dragAndDrop {
@@ -9,7 +10,11 @@ export class dragAndDrop {
   totalLocatorEASY: Locator;
   // Drag and Drop Nivel Hard
   goToDragDropHARD: Locator;
-  
+  rowForms: Locator;
+
+  circleDeposit: Locator;
+  squareDeposit: Locator;
+
 
   constructor(page: Page) {
     this.page = page;
@@ -24,6 +29,9 @@ export class dragAndDrop {
     this.goToDragDropHARD = this.page.getByRole("link", {
       name: "Drag and Drop Drag the",
     });
+    this.rowForms = this.page.locator('.MuiGrid-root').first();
+    this.circleDeposit = this.page.getByTestId('drop-circle');
+    this.squareDeposit = this.page.getByTestId('drop-square');
   }
   async dragAndDropCounter() {
     await this.goToDragAndDropEASY.click();
@@ -41,5 +49,19 @@ export class dragAndDrop {
   }
   async dragAndDropSimbols() {
     await this.goToDragDropHARD.click();
+    for (let i = 0; i < await this.rowForms.count(); i++) {
+      const search = await this.page.locator("div").nth(i);
+      const squareForms = await search.getByTestId('draggable-square').nth(i);
+      await this.page.pause();
+      const circleForms = await search.getByTestId('draggable-circle').nth(i);
+      await this.page.pause();
+      if (await squareForms) {
+        await this.page.pause();
+        await squareForms.dragTo(await this.squareDeposit);
+      } else{
+        await circleForms.dragTo(await this.circleDeposit);
+      }
+      
+    }
   }
 }

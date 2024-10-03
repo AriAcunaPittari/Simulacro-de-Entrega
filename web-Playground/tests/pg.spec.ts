@@ -1,7 +1,7 @@
 import test, { chromium, expect } from "@playwright/test";
 import { poManagerPG } from "../pom/poManager";
 
-//Total completado: 8
+//Total completado: 10
 
 test.describe("TestCases de Playground", () => {
   test("Agregar y eliminar", async ({ page }) => {
@@ -30,13 +30,14 @@ test.describe("TestCases de Playground", () => {
     const navigate = await pom.navigatePG;
     const dragAndDrop = await pom.dragAndDrop;
     await navigate.goToHomePage();
-    await dragAndDrop.dragAndDropCounter();
+   // await dragAndDrop.dragAndDropCounter();
     // Not Finished - Hard
-
+    await dragAndDrop.dragAndDropSimbols();
+    await page.pause();
 
   });
   test("Tabla dinamica", async ({ page }) => {
-    //Pendiente encontrar la comparativa.
+    //OK!
     const pom = new poManagerPG(page);
     const navigate = await pom.navigatePG;
     const dynamicTable = await pom.dynamicTable;
@@ -110,7 +111,7 @@ test.describe("TestCases de Playground", () => {
     await navigate.goToHomePage();
     await tooltips.hoverElements();
   });
-  test.only("Completar diversos inputs", async ({ page }) => {
+  test("Completar diversos inputs", async ({ page }) => {
     // OK!
     const pom = new poManagerPG(page);
     const navigate = await pom.navigatePG;
@@ -121,7 +122,6 @@ test.describe("TestCases de Playground", () => {
     await variousInputs.CompleteNumber();
     await variousInputs.CompleteDate();
     await variousInputs.CompleteTextArea();
-    //await page.pause();
     await variousInputs.ClearAll();
   });
 });
