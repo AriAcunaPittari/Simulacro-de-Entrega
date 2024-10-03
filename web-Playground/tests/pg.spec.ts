@@ -1,7 +1,7 @@
 import test, { chromium, expect } from "@playwright/test";
 import { poManagerPG } from "../pom/poManager";
 
-//Total completado: 10
+//Total completado: 11
 
 test.describe("TestCases de Playground", () => {
   test("Agregar y eliminar", async ({ page }) => {
@@ -104,7 +104,7 @@ test.describe("TestCases de Playground", () => {
     await sliders.moveWithInputBoxSlider();
   });
   test("Visualizar tooltips", async ({ page }) => {
-    // Locators problems
+    // OK!
     const pom = new poManagerPG(page);
     const navigate = await pom.navigatePG;
     const tooltips = await pom.tooltips;
