@@ -31,7 +31,7 @@ test.describe("TestCases de Playground", () => {
     const dragAndDrop = await pom.dragAndDrop;
     await navigate.goToHomePage();
     await dragAndDrop.dragAndDropCounter();
-    // Not Finished - Hard
+    // OK - Hard!
     await dragAndDrop.dragAndDropSimbols();
 
   });
