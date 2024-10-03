@@ -12,6 +12,8 @@ test.describe('TestCases de "Bank" ', () => {
     await bankManager.openAccount();
     await navigate.goToHomePage();
     await loginCustomer.login();
+    await loginCustomer.invalidDeposit(); //Casos Negativos
+    await loginCustomer.invalidWithdrawl(); //Casos Negativos
     await navigate.goToHomePage();
     await bankManager.deleteCustomer();
   });

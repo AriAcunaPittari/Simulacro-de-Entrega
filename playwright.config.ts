@@ -12,8 +12,8 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: './web-Playground',
-  //testDir: './web-Banking',
+  //testDir: './web-Playground',
+  testDir: './web-Banking',
 
   /* Run tests in files in parallel */
   fullyParallel: false,

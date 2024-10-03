@@ -57,7 +57,6 @@ export class bankManagerLogin {
     await this.inputPostCode.fill("123456");
     await this.addCustomerBtn.click();
   }
-  //async validateInfoRequired(){}
   //async validateInputsOpenAccount(){}
   async openAccount() {
     await this.openAccountBtn.click();
