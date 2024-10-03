@@ -11,10 +11,8 @@ export class dragAndDrop {
   // Drag and Drop Nivel Hard
   goToDragDropHARD: Locator;
   rowForms: Locator;
-
   circleDeposit: Locator;
   squareDeposit: Locator;
-
 
   constructor(page: Page) {
     this.page = page;
@@ -29,9 +27,9 @@ export class dragAndDrop {
     this.goToDragDropHARD = this.page.getByRole("link", {
       name: "Drag and Drop Drag the",
     });
-    this.rowForms = this.page.locator('.MuiGrid-root').first();
-    this.circleDeposit = this.page.getByTestId('drop-circle');
-    this.squareDeposit = this.page.getByTestId('drop-square');
+    this.rowForms = this.page.locator(".MuiGrid-root").first();
+    this.circleDeposit = this.page.getByTestId("drop-circle");
+    this.squareDeposit = this.page.getByTestId("drop-square");
   }
   async dragAndDropCounter() {
     await this.goToDragAndDropEASY.click();
@@ -49,19 +47,20 @@ export class dragAndDrop {
   }
   async dragAndDropSimbols() {
     await this.goToDragDropHARD.click();
-    for (let i = 0; i < await this.rowForms.count(); i++) {
-      const search = await this.page.locator("div").nth(i);
-      const squareForms = await search.getByTestId('draggable-square').nth(i);
-      await this.page.pause();
-      const circleForms = await search.getByTestId('draggable-circle').nth(i);
-      await this.page.pause();
-      if (await squareForms) {
-        await this.page.pause();
-        await squareForms.dragTo(await this.squareDeposit);
-      } else{
-        await circleForms.dragTo(await this.circleDeposit);
+    console.log("Rows:" + (await this.rowForms.count()));
+    for (let i = 1; i >= (await this.rowForms.count()); i++) {
+      const squareForms = await this.page.getByTestId(`draggable-square-${i}`);
+      const circleForms = await this.page.getByTestId(`draggable-circle-${i}`); //concatenamos el string y lo buscamos. MAGIC: `` SIEMPRE!
+      if (await squareForms.isVisible()) {
+        await squareForms.dragTo(this.squareDeposit);
+        console.log("Se agregó un cuadrado");
+      } else if (await circleForms.isVisible()) {
+        await circleForms.dragTo(this.circleDeposit);
+        console.log("Se agregó un círculo");
+      } else {
+        console.log("No hay más elementos visibles para arrastrar.");
+        break;
       }
-      
     }
   }
 }

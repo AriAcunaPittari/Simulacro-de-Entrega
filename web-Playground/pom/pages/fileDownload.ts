@@ -13,7 +13,6 @@ export class fileDownload {
     async downloadFile() {
         await this.goToDownload.click();
         await this.downloadBtn.click();
-        await this.page.pause();
         if (fs.existsSync('C:/Users/aacuna/Downloads/file.txt')){
             console.log("Archivo descargado y encontrado!");
         } else{

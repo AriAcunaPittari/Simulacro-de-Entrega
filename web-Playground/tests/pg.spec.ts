@@ -1,7 +1,7 @@
 import test, { chromium, expect } from "@playwright/test";
 import { poManagerPG } from "../pom/poManager";
 
-//Total completado: 11
+//Total completado: 13!!
 
 test.describe("TestCases de Playground", () => {
   test("Agregar y eliminar", async ({ page }) => {
@@ -33,7 +33,6 @@ test.describe("TestCases de Playground", () => {
    // await dragAndDrop.dragAndDropCounter();
     // Not Finished - Hard
     await dragAndDrop.dragAndDropSimbols();
-    await page.pause();
 
   });
   test("Tabla dinamica", async ({ page }) => {
