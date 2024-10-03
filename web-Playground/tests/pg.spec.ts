@@ -45,7 +45,7 @@ test.describe("TestCases de Playground", () => {
     await dynamicTable.encontrarResultado();
   });
   test("Descargar elementos", async ({ page }) => {
-    // Duda: No encuentra el archivo.
+    // OK!
     const pom = new poManagerPG(page);
     const navigate = await pom.navigatePG;
     const fileDownload = await pom.fileDownload;
