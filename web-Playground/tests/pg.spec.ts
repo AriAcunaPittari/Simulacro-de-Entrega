@@ -33,6 +33,7 @@ test.describe("TestCases de Playground", () => {
     await dragAndDrop.dragAndDropCounter();
     // Not Finished - Hard
 
+
   });
   test("Tabla dinamica", async ({ page }) => {
     //Pendiente encontrar la comparativa.
@@ -78,7 +79,7 @@ test.describe("TestCases de Playground", () => {
     await notification.Warning();
     await notification.Error();
   });
-  test.only("Seleccionar Opciones", async ({ page }) => {
+  test("Seleccionar Opciones", async ({ page }) => {
     // OK!
     const pom = new poManagerPG(page);
     const navigate = await pom.navigatePG;
@@ -109,7 +110,7 @@ test.describe("TestCases de Playground", () => {
     await navigate.goToHomePage();
     await tooltips.hoverElements();
   });
-  test("Completar diversos inputs", async ({ page }) => {
+  test.only("Completar diversos inputs", async ({ page }) => {
     // OK!
     const pom = new poManagerPG(page);
     const navigate = await pom.navigatePG;
@@ -120,7 +121,7 @@ test.describe("TestCases de Playground", () => {
     await variousInputs.CompleteNumber();
     await variousInputs.CompleteDate();
     await variousInputs.CompleteTextArea();
-    await page.pause();
+    //await page.pause();
     await variousInputs.ClearAll();
   });
 });

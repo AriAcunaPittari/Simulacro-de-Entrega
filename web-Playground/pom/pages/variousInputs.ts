@@ -49,40 +49,66 @@ export class variousInputs {
   async CompleteText() {
     await this.goToVariousInputsBtn.click();
     await this.textInput.fill("Esto es un texto");
-    /*if (this.textInput === this.textOutput) {
+    const textin = await this.textInput.inputValue();
+    console.log("VALOR DE INPUT:"+textin);
+    const textout = await this.textOutput.inputValue();
+    console.log("VALOR DE OUTPUT:"+textout);
+
+    if (textin === textout) {
       console.log("Los textos coinciden");
     } else {
       console.log("Los textos NO coinciden");
-    }*/
+    }
   }
   async CompletePassword() {
     await this.passInput.fill("c0ntrasen14");
-    /*if (this.passInput === this.passOutput) {
+    const passIn = await this.passInput.inputValue();
+    console.log("VALOR DE INPUT:"+passIn);
+    const passOut = await this.passOutput.inputValue();
+    console.log("VALOR DE OUTPUT:"+passOut);
+    if (passIn === passOut) {
       console.log("Las Contraseñas coinciden");
     } else {
       console.log("Las Contraseñas NO coinciden");
-    }*/
+    }
   }
   async CompleteNumber() {
     await this.numberInput.fill("123654789");
-    /*if (this.numberInput === this.numberOutput) {
+    const numbIn = await this.numberInput.inputValue();
+    console.log("VALOR DE INPUT:"+numbIn);
+    const numOut = await this.numberOutput.inputValue();
+    console.log("VALOR DE OUTPUT:"+numOut);
+    if (numbIn === numOut) {
       console.log("Los numeros coinciden");
     } else {
       console.log("Los numeros NO coinciden");
-    }*/
+    }
   }
   async CompleteDate() {
     await this.dateInput.fill("1996-09-30");
+    const dateIn = await this.dateInput.inputValue();
+    console.log("VALOR DE INPUT:"+dateIn );
+    const dateOut = await this.dateOutput.inputValue();
+    console.log("VALOR DE OUTPUT:"+dateOut);
+    if (dateIn  === dateOut) {
+      console.log("Las fechas coinciden");
+    } else {
+      console.log("Las fechas NO coinciden");
+    }
 }
   async CompleteTextArea() {
     await this.textAreaInput.fill(
       "Esto es un texto extremadamente largo que solo es para aprovechar espacios del area de texto."
     );
-    /*if (this.textAreaInput === this.textAreaOutput) {
+    const textAreaIn = await this.textAreaInput.inputValue();
+    console.log("VALOR DE INPUT:"+textAreaIn);
+    const textAreaOut = await this.textAreaOutput.inputValue();
+    console.log("VALOR DE OUTPUT:"+textAreaOut);
+    if (textAreaIn === textAreaOut) {
       console.log("Los textos en el Area coinciden");
     } else {
       console.log("Los textos en el Area NO coinciden");
-    }*/
+    }
   }
   async ClearAll() {
     await this.clearAllBtn.click();
